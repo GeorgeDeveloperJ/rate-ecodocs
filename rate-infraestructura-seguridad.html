@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoDocs — Calificar Infraestructura y Seguridad</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #0d3d2a;
+    --green-mid: #1a6645;
+    --green-bright: #2dba72;
+    --green-light: #a8f0c6;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --dark: #0a1f14;
+    --text-muted: #6b8c79;
+    --accent: #e8f5ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--green-deep);
+    overflow-x: hidden;
+    min-height: calc(100vh - 60px);
+  }
+
+  
+
+  /* PORTAL HEADER */
+  .portal-header {
+    background: var(--green-deep);
+    padding: 1.2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--green-bright); }
+  .back-link {
+    font-size: 0.85rem;
+    color: var(--green-light);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 1; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PAGE HERO */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+
+  /* PANEL IZQUIERDO */
+  .contact-left {
+    background: var(--green-deep);
+    padding: 5rem 5% 5rem 5%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-left::before {
+    content: '';
+    position: absolute; bottom: -20%; right: -20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(45,186,114,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .contact-left::after {
+    content: '';
+    position: absolute; top: 10%; left: -10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(168,240,198,0.06) 0%, transparent 65%);
+  }
+
+  .cl-label {
+    font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--green-bright);
+    font-weight: 500; margin-bottom: 1rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .cl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 3.5vw, 4rem);
+    font-weight: 900; color: var(--white);
+    line-height: 1.1; margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .cl-title em { font-style: normal; color: var(--green-bright); }
+  .cl-sub {
+    color: var(--green-light); font-size: 1rem;
+    line-height: 1.7; font-weight: 300;
+    opacity: 0.85; max-width: 400px;
+    animation: fadeUp 0.6s 0.2s ease both;
+    margin-bottom: 3rem;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; animation: fadeUp 0.6s 0.3s ease both; }
+  .ci-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .ci-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(45,186,114,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+    border: 1px solid rgba(45,186,114,0.25);
+  }
+  .ci-label { font-size: 0.78rem; color: var(--green-light); opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+  .ci-value { color: var(--white); font-size: 0.95rem; font-weight: 400; }
+
+  /* PANEL DERECHO — FORMULARIO */
+  .contact-right {
+    background: var(--cream);
+    padding: 5rem 5% 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--green-deep);
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .form-sub {
+    color: var(--text-muted); font-size: 0.95rem;
+    font-weight: 300; margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .contact-form { animation: fadeUp 0.6s 0.2s ease both; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.82rem; font-weight: 500;
+    color: var(--green-mid);
+    text-transform: uppercase; letter-spacing: 0.8px;
+  }
+
+  input, textarea {
+    background: var(--white);
+    border: 1.5px solid rgba(45,186,114,0.2);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--green-deep);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--green-bright);
+    box-shadow: 0 0 0 3px rgba(45,186,114,0.1);
+  }
+  input::placeholder, textarea::placeholder { color: #b0c4b8; }
+  textarea { resize: vertical; min-height: 120px; }
+
+  /* RATING ESTILOS */
+  .rating-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .rating-opt {
+    position: relative;
+    text-align: center;
+  }
+  .rating-opt input[type="radio"] { display: none; }
+  .rating-opt label {
+    display: flex; align-items: center; justify-content: center;
+    padding: 0.8rem 0;
+    background: var(--white);
+    border: 1.5px solid rgba(45,186,114,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  .rating-opt input[type="radio"]:checked + label {
+    border-color: var(--green-bright);
+    background: var(--green-bright);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(45,186,114,0.2);
+  }
+  .rating-opt label:hover { border-color: var(--green-bright); }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--green-deep);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 50px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 20px rgba(13,61,42,0.2);
+    letter-spacing: 0.3px;
+  }
+  .btn-submit:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,186,114,0.3); }
+  .btn-submit:active { transform: translateY(0); }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+    animation: fadeUp 0.5s ease both;
+  }
+  .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900;
+    color: var(--green-deep);
+    margin-bottom: 0.8rem;
+  }
+  .success-sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; line-height: 1.6; }
+
+  
+
+  @media (max-width: 900px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-left { padding: 4rem 5%; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="portal-header">
+  <a href="index.html" class="logo">Eco<span>Docs</span></a>
+  <a href="index.html" class="back-link">← Volver a evaluaciones</a>
+</header>
+
+
+
+<div class="contact-layout">
+  <!-- PANEL IZQUIERDO -->
+  <div class="contact-left">
+    <div class="cl-label">Tu opinión importa</div>
+    <h1 class="cl-title">Califica al departamento de <em>Infraestructura y Seguridad</em></h1>
+    <p class="cl-sub">Ayúdanos a mejorar continuamente. Tu retroalimentación es clave para optimizar nuestra infraestructura tecnológica y la protección de datos.</p>
+
+    <div class="contact-info">
+      <div class="ci-item">
+        <div class="ci-icon">🟢</div>
+        <div>
+          <div class="ci-label">Aspecto 1</div>
+          <div class="ci-value">Disponibilidad del sistema</div>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🔒</div>
+        <div>
+          <div class="ci-label">Aspecto 2</div>
+          <div class="ci-value">Protección de datos</div>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🌐</div>
+        <div>
+          <div class="ci-label">Aspecto 3</div>
+          <div class="ci-value">Soporte de redes</div>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon">🚨</div>
+        <div>
+          <div class="ci-label">Aspecto 4</div>
+          <div class="ci-value">Respuesta a incidentes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL DERECHO -->
+  <div class="contact-right">
+    <div id="formWrapper">
+      <div class="form-title">Déjanos tu evaluación</div>
+      <p class="form-sub">Tus comentarios son confidenciales y nos ayudan a mejorar nuestro nivel.</p>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre (Opcional)</label>
+            <input type="text" id="nombre" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label for="email">Correo (Opcional)</label>
+            <input type="email" id="email" placeholder="tu@empresa.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Puntuación General</label>
+          <div class="rating-grid">
+            <div class="rating-opt">
+              <input type="radio" name="rating" id="r1" value="1" required>
+              <label for="r1">1</label>
+            </div>
+            <div class="rating-opt">
+              <input type="radio" name="rating" id="r2" value="2">
+              <label for="r2">2</label>
+            </div>
+            <div class="rating-opt">
+              <input type="radio" name="rating" id="r3" value="3">
+              <label for="r3">3</label>
+            </div>
+            <div class="rating-opt">
+              <input type="radio" name="rating" id="r4" value="4">
+              <label for="r4">4</label>
+            </div>
+            <div class="rating-opt">
+              <input type="radio" name="rating" id="r5" value="5">
+              <label for="r5">5</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Comentarios</label>
+          <textarea id="mensaje" placeholder="Comparte los detalles de tu evaluación aquí..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar evaluación →</button>
+        <p class="form-note">🔒 Tu información está protegida.</p>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">⭐</div>
+      <div class="success-title">¡Evaluación enviada!</div>
+      <p class="success-sub">Gracias por tu tiempo. Tu retroalimentación para el área de Infraestructura y Seguridad ha sido registrada exitosamente y será tomada en cuenta para nuestra mejora continua.</p>
+      <br>
+      <a href="index.html" style="display:inline-block;margin-top:1rem;background:var(--green-deep);color:var(--white);padding:0.85rem 2rem;border-radius:50px;text-decoration:none;font-weight:500;transition:all 0.2s">Volver al inicio →</a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      document.getElementById('formWrapper').style.display = 'none';
+      const msg = document.getElementById('successMsg');
+      msg.style.display = 'block';
+    }, 1200);
+  }
+</script>
+
+<footer style="background:var(--dark);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;">
+  <span style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:#fff;">Eco<span style="color:var(--green-bright)">Docs</span></span>
+  <span style="color:rgba(255,255,255,0.3);font-size:0.8rem;">&copy; 2026 EcoDocs &middot; Evaluaciones internas &middot; Confidencial</span>
+</footer>
+
+</body>
+</html>
