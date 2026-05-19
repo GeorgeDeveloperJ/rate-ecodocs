@@ -1,2 +1,6 @@
-window.RATE_ECODOCS_SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
-window.RATE_ECODOCS_SUPABASE_ANON_KEY = "TU_SUPABASE_ANON_KEY";
+window.EcoDocsConfig = {
+  // Reemplaza estos valores por los de tu proyecto Supabase.
+  supabaseUrl: "https://uofscvsvjhfdhacxydqj.supabase.co",
+  supabaseAnonKey: "sb_publishable_SWGEmqC1RY4DOdI-1lgcwg_mYDYkdzx",
+  ratingsTable: "ratings",
+};

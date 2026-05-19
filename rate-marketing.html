@@ -324,8 +324,8 @@
             <input type="text" id="nombre" placeholder="Tu nombre">
           </div>
           <div class="form-group">
-            <label for="email">Correo (Opcional)</label>
-            <input type="email" id="email" placeholder="tu@empresa.com">
+            <label for="email">Correo (Requerido)</label>
+            <input type="email" id="email" placeholder="tu@empresa.com" required>
           </div>
         </div>
 
@@ -361,7 +361,7 @@
         </div>
 
         <button type="submit" class="btn-submit">Enviar evaluación →</button>
-        <p class="form-note">🔒 Tu información está protegida.</p>
+        <p class="form-note">🔒 Tu evaluación se guarda de forma segura en la base de datos.</p>
       </form>
     </div>
 
@@ -376,6 +376,7 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="rating-submit.js"></script>
 
