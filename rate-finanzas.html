@@ -263,7 +263,7 @@
   }
 </style>
 </head>
-<body>
+<body data-department="Finanzas">
 
 <header class="portal-header">
   <a href="index.html" class="logo">Eco<span>Docs</span></a>
@@ -376,20 +376,8 @@
 </div>
 
 
-<script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      document.getElementById('formWrapper').style.display = 'none';
-      const msg = document.getElementById('successMsg');
-      msg.style.display = 'block';
-    }, 1200);
-  }
-</script>
+<script src="supabase-config.js"></script>
+<script src="rating-submit.js"></script>
 
 <footer style="background:var(--dark);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;">
   <span style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:#fff;">Eco<span style="color:var(--green-bright)">Docs</span></span>

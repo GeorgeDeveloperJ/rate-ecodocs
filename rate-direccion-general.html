@@ -259,7 +259,7 @@
   }
 </style>
 </head>
-<body>
+<body data-department="Dirección General">
 
 <header class="portal-header">
   <a href="index.html" class="logo">Eco<span>Docs</span></a>
@@ -374,20 +374,8 @@
   <span style="color:rgba(255,255,255,0.3);font-size:0.8rem;">© 2026 EcoDocs · Evaluaciones internas · Confidencial</span>
 </footer>
 
-<script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      document.getElementById('formWrapper').style.display = 'none';
-      const msg = document.getElementById('successMsg');
-      msg.style.display = 'block';
-    }, 1200);
-  }
-</script>
+<script src="supabase-config.js"></script>
+<script src="rating-submit.js"></script>
 
 </body>
 </html>
